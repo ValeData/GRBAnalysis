@@ -54,9 +54,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'GRBAnalysis'
-copyright = '2016, Vale Data (Y.Wang ...)'
-author = 'Vale Data (Y.Wang ...)'
+project = 'Learn GRB Analysis in 3 days'
+copyright = '2016, Vale Data (Y.Wang, M.Peresano, R.Moradi, S.Shakeri, Y.Aimuratov)'
+author = 'Vale Data (Y.Wang, M.Peresano, R.Moradi, S.Shakeri, Y.Aimuratov)'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

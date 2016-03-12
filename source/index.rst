@@ -12,6 +12,8 @@ This guide is **practical**, its purpose is to gain enough technique to start yo
 
 Hope it acts as the entry of your new GRB data world.
 
+*Do you have questions? Please send an email to wang@shuil.org or open an issue on `Github <https://github.com/ValeData/GRBAnalysis/issues>`_*
+
 
 .. toctree::
    :maxdepth: 2
@@ -23,7 +25,7 @@ Hope it acts as the entry of your new GRB data world.
    Fermi LAT
    Advanced Learning
    Helpful Links
-   Do you have questions?
+   
 
 
 

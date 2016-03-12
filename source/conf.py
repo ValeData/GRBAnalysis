@@ -54,7 +54,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Learn GRB Data Analysis in 3 Days'
+project = 'GRB Data Analysis in 3 Days'
 copyright = '2016, Vale Data (Y.Wang, M.Peresano, R.Moradi, S.Shakeri, Y.Aimuratov)'
 author = 'Vale Data (Y.Wang, M.Peresano, R.Moradi, S.Shakeri, Y.Aimuratov)'
 

@@ -32,7 +32,7 @@ This example is for MacOS.
 		./configure >& config.out &
 		
 
-*	Create ``.bash_profile`` file in your home root folder ``\Users\Yourname\``, add the content::
+*	Create ``.bash_profile`` file in your home root folder ``/Users/Yourname/``, add the content::
 		
 		HEADAS=/Applications/heasoft/x86_64-apple-darwin15.0.0
 		export HEADAS

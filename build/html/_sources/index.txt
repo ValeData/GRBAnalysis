@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Learn GRB Analysis in 3 days
+Learn GRB Data Analysis in 3 Days
 =======================================
 
 Conservatively speaking, Gamma-ray burst (GRB) data analysis can be learned in 3 days, even it can be finished within 3 hours if you have experience in programming or data analysis, just follow this guide. 

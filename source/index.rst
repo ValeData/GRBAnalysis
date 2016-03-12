@@ -24,8 +24,8 @@ Hope it acts as the entry of your GRB data world.
    Swift XRT <XRT>
    Fermi GBM <GBM>
    Fermi LAT <LAT>
-   Spectrum Analysis <Spectrum>
-   Light-curve Analysis <Light-curve>
+   Spectrum Fitting <Spectrum>
+   Light-curve Fitting <Light-curve>
    Advanced Learning <Advanced>
    Helpful Links <Links>
    

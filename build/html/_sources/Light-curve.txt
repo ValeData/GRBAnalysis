@@ -1,4 +1,4 @@
-Light-curve Analysis 
+Light-curve Fitting 
 =======================================
 
 .. contents::

@@ -1,4 +1,4 @@
-Spectrum Analysis 
+Spectrum Fitting 
 =======================================
 
 .. contents::

@@ -10,7 +10,7 @@ Conservatively speaking, Gamma-ray burst (GRB) data analysis can be learned in 3
 
 This guide is **practical**, its purpose is to gain enough technique to start your work, also it provides some links for deepening your knowledge. 
 
-Hope it will act as the entry of your new GRB data world.
+Hope it acts as the entry of your new GRB data world.
 
 
 .. toctree::
@@ -23,6 +23,7 @@ Hope it will act as the entry of your new GRB data world.
    Fermi LAT
    Advanced Learning
    Helpful Links
+   Do you have questions?
 
 
 

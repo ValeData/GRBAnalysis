@@ -9,7 +9,7 @@ Windows Timing & Photon Counting
 
 
 
-Type of Data file
+Type of Data File
 --------------------------------
 
 
@@ -17,7 +17,7 @@ Download Data
 --------------------------------
 
 
-Generate spectrum and lightcurve
+Generate Spectrum and Light-curve
 --------------------------------
 
 

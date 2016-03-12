@@ -16,6 +16,7 @@ Hope it acts as the entry of your GRB data world.
 .. toctree::
    :maxdepth: 2
    :numbered:
+   :hidden:
    :caption: Contents
    
    10 minutes tutorial <tutorial>

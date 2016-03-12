@@ -10,24 +10,28 @@ Conservatively speaking, Gamma-ray burst (GRB) data analysis can be learned in 3
 
 This guide is **practical**, its purpose is to gain enough technique to start your work, also it provides some links for deepening your knowledge. 
 
-Hope it acts as the entry of your new GRB data world.
-
-*Do you have questions? Please send an email to wang@shuil.org or open an issue on `Github <https://github.com/ValeData/GRBAnalysis/issues>`_*
+Hope it acts as the entry of your GRB data world.
 
 
 .. toctree::
    :maxdepth: 2
+   :numbered:
    :caption: Contents
    
-   Swift BAT
-   Swift XRT
-   Fermi GBM
-   Fermi LAT
-   Advanced Learning
-   Helpful Links
+   10 minutes tutorial <tutorial>
+   Swift BAT <BAT>
+   Swift XRT <XRT>
+   Fermi GBM <GBM>
+   Fermi LAT <LAT>
+   Spectrum Analysis <Spectrum>
+   Light-curve Analysis <Light-curve>
+   Advanced Learning <Advanced>
+   Helpful Links <Links>
    
+--------
 
 
+*Do you have questions? Please send an email to* wang@shuil.org *or open an issue on* Github_.
 
 .. Indices and tables
 .. ==================
@@ -35,4 +39,10 @@ Hope it acts as the entry of your new GRB data world.
 .. * :ref:`genindex`
 .. * :ref:`modindex`
 .. * :ref:`search`
+
+.. _Github: https://github.com/ValeData/GRBAnalysis/issues
+
+
+
+
 

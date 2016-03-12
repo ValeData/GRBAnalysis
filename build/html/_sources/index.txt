@@ -3,20 +3,46 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to GRBAnalysis's documentation!
+Learn GRB Analysis in 3 days
 =======================================
 
-Contents:
+Conservatively speaking, Gamma-ray burst (GRB) data analysis can be learned in 3 days, even it can be finished within 3 hours if you have experience in programming or data analysis, just follow this guide. 
+
+This guide is **practical**, its purpose is to gain enough technique to start your work, also it provides some links for deepening your knowledge. 
+
+Hope it acts as the entry of your GRB data world.
+
 
 .. toctree::
    :maxdepth: 2
+   :numbered:
+   :caption: Contents
+   
+   10 minutes tutorial <tutorial>
+   Swift BAT <BAT>
+   Swift XRT <XRT>
+   Fermi GBM <GBM>
+   Fermi LAT <LAT>
+   Spectrum Analysis <Spectrum>
+   Light-curve Analysis <Light-curve>
+   Advanced Learning <Advanced>
+   Helpful Links <Links>
+   
+--------
+
+
+*Do you have questions? Please send an email to* wang@shuil.org *or open an issue on* Github_.
+
+.. Indices and tables
+.. ==================
+
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`
+
+.. _Github: https://github.com/ValeData/GRBAnalysis/issues
 
 
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 

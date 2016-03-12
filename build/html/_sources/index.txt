@@ -20,6 +20,7 @@ Hope it acts as the entry of your GRB data world.
    :caption: Contents
    
    10 minutes tutorial <tutorial>
+   Software Installation <Software>
    Swift BAT <BAT>
    Swift XRT <XRT>
    Fermi GBM <GBM>

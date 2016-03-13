@@ -101,4 +101,4 @@ How to generate spectrum and light curve ?
 .. _`Swift UK data center`: http://www.swift.ac.uk/xrt_curves/00676423/
 .. _`Definition of RMF and ARF file formats`: http://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/docs/memos/cal_gen_92_002/cal_gen_92_002.html
 .. _`Swift Archive Download Portal`: http://www.swift.ac.uk/swift_portal/
-.. _`dlXRT`: _Script/dlXRT.html
+.. _`dlXRT`: _script/dlXRT.html

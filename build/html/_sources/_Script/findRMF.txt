@@ -22,8 +22,6 @@ findRMF is used for finding the corresponding response matrix file from event fi
 
 **Source code:**
 
-`Javascript API <_code/findRMF>`_
-
 .. literalinclude:: _code/findRMF
    :linenos:
    :language: perl

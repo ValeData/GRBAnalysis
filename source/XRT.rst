@@ -16,6 +16,7 @@ The Photon Counting mode retains full imaging and spectroscopic resolution but t
 
 .. figure:: _image/160227A_XRT.png
 	:align: center
+	:width: 450px
 
 	Light curve of GRB 160227A taken from `Swift UK data center`_, the blue part is from WT mode and the red part is observed by PC mode.
 
@@ -26,6 +27,7 @@ What kind of files do we need?
 
 .. figure:: _image/compareEvt.png
 	:align: center
+	:width: 450px
 
 	Unscreened (left) and screened (right) images of GRB 160227A.
 
@@ -33,6 +35,7 @@ What kind of files do we need?
 
 .. figure:: _image/wtg0to2eff.gif
 	:align: center
+	:width: 450px
 	
 	XRT Effective area curves for WT mode grade 0-2 and PC mode grade 0-12.
 
@@ -57,6 +60,7 @@ How to download data?
 
 .. figure:: _image/160227A_Data.png
 	:align: center
+	:width: 450px
 	
 	GRB 160227A Data Download Page
 

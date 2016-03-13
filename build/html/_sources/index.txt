@@ -20,22 +20,22 @@ Hope it acts as the entry of your GRB data world.
    :caption: Contents
    
    10 minutes tutorial <tutorial>
-   Software Installation <Software>
+   Software Installation <software>
    Swift BAT <BAT>
    Swift XRT <XRT>
    Fermi GBM <GBM>
    Fermi LAT <LAT>
-   Spectrum Fitting <Spectrum>
-   Light-curve Fitting <Light-curve>
-   Advanced Learning <Advanced>
-   Helpful Links <Links>  
+   Spectrum Fitting <spectrum>
+   Light-curve Fitting <light-curve>
+   Advanced Learning <advanced>
+   Helpful Links <links>  
 
    
 .. toctree::
    :maxdepth: 2
    :hidden:
    
-   Scripts <_script/Script>
+   Scripts <_script/script>
    
 --------
 

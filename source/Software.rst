@@ -25,7 +25,9 @@ This example is for MacOS.
 
 *	Download the compiled package of ``HEAsoft`` from NASA's HEASARC_, here shows an example for Mac OS 10.11:
 
- .. image:: _image/heasoft_download.png
+ .. figure:: _image/heasoft_download.png
+ 			:align: center
+ 			:width: 450px
  
 *	Uncompress HEAsoft to your application folder, here I put it in ``/Applications/heasoft/``, then go to ``/Applications/heasoft/x86_64-apple-darwin15.0.0/BUILD_DIR``, and run::
 

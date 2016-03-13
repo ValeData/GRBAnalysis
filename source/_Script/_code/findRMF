@@ -3,37 +3,40 @@
 require "libswxrt.pl";
 use File::Copy;
 
+# Task info
+
 our %Task = (
-	name    => 'findRMF',
-	version => '0.1',
-	releasedate => "2016-03-13",
-	chatter => 2,
-	status => 0,
-	errmess => '',
-	stem    => '',
-	author  => 'Y.Wang',
-    );
+    name        => 'findRMF',
+    version     => '0.2',
+    releasedate => "2016-03-13",
+    chatter     => 2,
+    status      => 0,
+    errmess     => '',
+    stem        => '',
+    author      => 'Y.Wang',
+);
 
-		
-# Initial 
+# Initial
 
-my $isCopy = 0; # 0 is no, 1 is yes.
+my $isCopy = 0;    # 0 is no, 1 is yes.
 
 # Main #
 
-## read parameter
-my $filename = $ARGV[0] if ($ARGV[0]);
+return 0 if $Task{status};
 
-unless(defined $filename){
-print "Please input the FITS filename (eg. sw00271019000xwtw2po_cl.evt):\n";
-chomp($filename = <STDIN>);
+## read parameter
+my $filename = $ARGV[0] if ( $ARGV[0] );
+
+unless ( defined $filename ) {
+    &PrntChty( 1, "Please input the FITS filename (eg. sw00271019000xwtw2po_cl.evt):\n" );
+    chomp( $filename = <STDIN> );
 }
 
+## get response matrix file
+&GetRmfFile($filename);
 
-## get response matrix file 
-my $rmfFilename = &GetRmfFile($filename);
+&Error if $Task{status};
 
 ## copy rmf file to current folder
-$copied = copy($rmfFilename, "./") if $rmfFilename and $isCopy;
-print "\nRMF file has been copied to current folder.\n" if $copied;
-print "Cannot find corresponding RMF file. \n" unless $rmfFilename;
+$copied = copy( $rmfFilename, "./" ) if $rmfFilename and $isCopy;
+&PrntChty( 2, "\nRMF file has been copied to current folder.\n" ) if $copied;

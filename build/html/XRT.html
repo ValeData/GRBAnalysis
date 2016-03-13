@@ -87,10 +87,10 @@
 <li class="toctree-l1"><a class="reference internal" href="Software.html">2. Software Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="BAT.html">3. Swift BAT</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">4. Swift XRT</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#windows-timing-photon-counting">4.1. Windows Timing &amp; Photon Counting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#type-of-data-file">4.2. Type of Data File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#download-data">4.3. Download Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#generate-spectrum-and-light-curve">4.4. Generate Spectrum and Light-curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#two-modes-windows-timing-photon-counting">4.1. Two Modes: Windows Timing &amp; Photon Counting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-kind-of-files-do-we-need">4.2. What kind of files do we need?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-download-data">4.3. How to download data?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-generate-spectrum-and-light-curve">4.4. How to generate spectrum and light curve ?</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="GBM.html">5. Fermi GBM</a></li>
@@ -150,33 +150,85 @@
 <h1>4. <em>Swift</em> -XRT Data Analysis<a class="headerlink" href="#swift-xrt-data-analysis" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#windows-timing-photon-counting" id="id1">Windows Timing &amp; Photon Counting</a></li>
-<li><a class="reference internal" href="#type-of-data-file" id="id2">Type of Data File</a></li>
-<li><a class="reference internal" href="#download-data" id="id3">Download Data</a></li>
-<li><a class="reference internal" href="#generate-spectrum-and-light-curve" id="id4">Generate Spectrum and Light-curve</a></li>
+<li><a class="reference internal" href="#two-modes-windows-timing-photon-counting" id="id5">Two Modes: Windows Timing &amp; Photon Counting</a></li>
+<li><a class="reference internal" href="#what-kind-of-files-do-we-need" id="id6">What kind of files do we need?</a></li>
+<li><a class="reference internal" href="#how-to-download-data" id="id7">How to download data?</a></li>
+<li><a class="reference internal" href="#how-to-generate-spectrum-and-light-curve" id="id8">How to generate spectrum and light curve ?</a></li>
 </ul>
 </div>
-<div class="section" id="windows-timing-photon-counting">
-<h2><a class="toc-backref" href="#id1">4.1. Windows Timing &amp; Photon Counting</a><a class="headerlink" href="#windows-timing-photon-counting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="two-modes-windows-timing-photon-counting">
+<h2><a class="toc-backref" href="#id5">4.1. Two Modes: Windows Timing &amp; Photon Counting</a><a class="headerlink" href="#two-modes-windows-timing-photon-counting" title="Permalink to this headline">¶</a></h2>
 <p><em>Swift</em>-XRT has two modes, Windowed Timing (WT) and Photon Counting (PC).</p>
 <p>The Windowed Timing mode is obtained by binning 10 rows into a single row, and then reading out only the central 200 columns of the CCD. The time resolution of this mode is 1.7 ms.</p>
 <p>The Photon Counting mode retains full imaging and spectroscopic resolution but the time resolution is limited to 2.5 s.</p>
-<p>Below is the light curve of GRB 160227A taken from <a class="reference external" href="http://www.swift.ac.uk/xrt_curves/00676423/">Swift UK data center</a>, the blue part is from WT mode and the red part is observed by PC mode.</p>
+<div class="figure align-center" id="id1">
 <img alt="_images/160227A_XRT.png" src="_images/160227A_XRT.png" />
+<p class="caption"><span class="caption-text">Light curve of GRB 160227A taken from <a class="reference external" href="http://www.swift.ac.uk/xrt_curves/00676423/">Swift UK data center</a>, the blue part is from WT mode and the red part is observed by PC mode.</span></p>
 </div>
-<div class="section" id="type-of-data-file">
-<h2><a class="toc-backref" href="#id2">4.2. Type of Data File</a><a class="headerlink" href="#type-of-data-file" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="what-kind-of-files-do-we-need">
+<h2><a class="toc-backref" href="#id6">4.2. What kind of files do we need?</a><a class="headerlink" href="#what-kind-of-files-do-we-need" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id2">
 <img alt="_images/compareEvt.png" src="_images/compareEvt.png" />
+<p class="caption"><span class="caption-text">Unscreened (left) and screened (right) images of GRB 160227A.</span></p>
+</div>
 <ul class="simple">
-<li><strong>Event file</strong> <code class="docutils literal"><span class="pre">.evt</span></code>, the most important one, which contains the observational data. Swift website provides <strong>screened event file</strong> <code class="docutils literal"><span class="pre">_cl.evt</span></code> and <strong>unscreened event file</strong> <code class="docutils literal"><span class="pre">_uf.evt</span></code>.</li>
-<li><strong>Response Matrix</strong> <code class="docutils literal"><span class="pre">.rmf</span></code>,</li>
+<li><strong>Event File</strong> <code class="docutils literal"><span class="pre">.evt</span></code>, the most important one, which contains the observational data. Swift website provides <strong>screened event file</strong> <code class="docutils literal"><span class="pre">_cl.evt</span></code> and <strong>unscreened event file</strong> <code class="docutils literal"><span class="pre">_uf.evt</span></code>.</li>
+</ul>
+<div class="figure align-center" id="id3">
+<img alt="_images/wtg0to2eff.gif" src="_images/wtg0to2eff.gif" />
+<p class="caption"><span class="caption-text">XRT Effective area curves for WT mode grade 0-2 and PC mode grade 0-12.</span></p>
+</div>
+<ul>
+<li><p class="first"><strong>Redistribution Matrix File</strong> <code class="docutils literal"><span class="pre">.rmf</span></code> and  <strong>Ancillary Response File</strong> <code class="docutils literal"><span class="pre">.arf</span></code>. The Redistribution Matrix gives the probabilities of an incoming photon of energy E will be detected in several detector&#8217;s channels. The Ancillary Response Matrix gives the &#8220;effective area&#8221;, the effective sensitivity area of the detector to photons of given energy&#8221; of the detector system, and usually includes such components as mirror vignetting, filters, etc.</p>
+<blockquote>
+<div><p>In some cases <code class="docutils literal"><span class="pre">.arf</span></code> and <code class="docutils literal"><span class="pre">.rmf</span></code> are supplemented, in the cases of BAT and UVOT, replaced by <code class="docutils literal"><span class="pre">.rsp</span></code> files.  A detailed             description is available: <a class="reference external" href="http://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/docs/memos/cal_gen_92_002/cal_gen_92_002.html">Definition of RMF and ARF file formats</a>.</p>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>Housekeeping File</strong> <code class="docutils literal"><span class="pre">.hk</span></code>, The Housekeeping file contains the information of satellite while observing the GRB, for instance, CCD temperature, voltage and etc.</p>
+</li>
+<li><p class="first"><strong>Attitude files</strong> <code class="docutils literal"><span class="pre">.sat</span></code> <code class="docutils literal"><span class="pre">.pat</span></code> <code class="docutils literal"><span class="pre">.uat</span></code>, The <code class="docutils literal"><span class="pre">.sat</span></code> file contains the attitude determined from the spacecraft star trackers. The <code class="docutils literal"><span class="pre">.pat</span></code> file is almost identical to the sat file, but the task <code class="docutils literal"><span class="pre">attjumpcorr</span></code> has been applied to it. From the point of view of XRT analysis, these files are indistinguishable. The attitude in the <code class="docutils literal"><span class="pre">.uat</span></code> file has been determined using the UVOT as a star tracker.</p>
+</li>
 </ul>
 </div>
-<div class="section" id="download-data">
-<h2><a class="toc-backref" href="#id3">4.3. Download Data</a><a class="headerlink" href="#download-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-to-download-data">
+<h2><a class="toc-backref" href="#id7">4.3. How to download data?</a><a class="headerlink" href="#how-to-download-data" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Select the GRB from <a class="reference external" href="http://www.swift.ac.uk/swift_portal/">Swift Archive Download Portal</a>, we choose 160227A for example.</li>
+</ol>
+<div class="figure align-center" id="id4">
+<img alt="_images/160227A_Data.png" src="_images/160227A_Data.png" />
+<p class="caption"><span class="caption-text">GRB 160227A Data Download Page</span></p>
 </div>
-<div class="section" id="generate-spectrum-and-light-curve">
-<h2><a class="toc-backref" href="#id4">4.4. Generate Spectrum and Light-curve</a><a class="headerlink" href="#generate-spectrum-and-light-curve" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic" start="2">
+<li><p class="first">Above figure show the download page with individual observations. If you want to download all the data for XRT analysis, select  &#8220;xrt&#8221; and &#8220;auxil&#8221; on the top-left and click &#8220;download selected&#8221;, &#8220;xrt&#8221; has the XRT data and  &#8220;auxil&#8221; contains the satellite information.</p>
+</li>
+<li><p class="first">Here we only need some necessary file for the early afterglow analysis. Those files are included in obs ID: <strong>00676423000</strong>, which contains the data till 4532.6s data after the GRB trigger. Click on &#8220;00676423000&#8221;, a list of many files appear.</p>
+</li>
+<li><p class="first">First we download the event file <code class="docutils literal"><span class="pre">sw00676423000xpcw3po_cl.evt</span></code> of PC mode and <code class="docutils literal"><span class="pre">sw00676423000xwtw2po_cl.evt</span></code> of WT mode, and the housekeeping file <code class="docutils literal"><span class="pre">sw00676423000xhd.hk</span></code>.</p>
+</li>
+<li><p class="first">Determine the ATTFLAG of the event file in order to select the attitude file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>fkeyprint sw00676423000xpcw3po_cl.evt.gz ATTFLAG
+
+# FILE: sw00676423000xpcw3po_cl.evt.gz
+# KEYNAME: ATTFLAG
+# EXTENSION:    0
+ATTFLAG = &#39;110     &#39;           / Attitude type flag
+# EXTENSION:    1
+ATTFLAG = &#39;110     &#39;           / Attitude type flag
+# EXTENSION:    2
+# EXTENSION:    3
+# EXTENSION:    4
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">fkeyprint</span></code> is used to print the keywori stored in FITS file, it displys <code class="docutils literal"><span class="pre">ATTFLAG</span> <span class="pre">=</span> <span class="pre">110</span></code>, which means the extension of attitude file is <code class="docutils literal"><span class="pre">.pat</span></code>, so we shall download <code class="docutils literal"><span class="pre">sw00676423000pat.fits</span></code>. The correspondence is <code class="docutils literal"><span class="pre">100</span> <span class="pre">=</span> <span class="pre">.sat</span> <span class="pre">file</span></code>, <code class="docutils literal"><span class="pre">110</span> <span class="pre">=</span> <span class="pre">.pat</span> <span class="pre">file</span></code>, <code class="docutils literal"><span class="pre">`111</span> <span class="pre">=</span> <span class="pre">.uat</span> <span class="pre">file</span></code>, and <code class="docutils literal"><span class="pre">101</span> <span class="pre">=</span> <span class="pre">.uat</span> <span class="pre">file</span></code>.</p>
+</li>
+<li><p class="first">Response matrix files <code class="docutils literal"><span class="pre">.rmf</span></code>, <code class="docutils literal"><span class="pre">.arf</span></code> and <code class="docutils literal"><span class="pre">.rsp</span></code> are not in this page, we will download and produce them when doing the spectrum analysis.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="how-to-generate-spectrum-and-light-curve">
+<h2><a class="toc-backref" href="#id8">4.4. How to generate spectrum and light curve ?</a><a class="headerlink" href="#how-to-generate-spectrum-and-light-curve" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

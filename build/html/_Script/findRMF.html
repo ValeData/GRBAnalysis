@@ -201,45 +201,51 @@ CallQuzcif: Info:/Applications/heasoft/CALDB_LOCAL/data/swift/xrt/cpf/rmf/swxpc0
 36
 37
 38
-39</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/perl</span>
+39
+40
+41
+42</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/perl</span>
 
 <span class="nb">require</span> <span class="s">&quot;libswxrt.pl&quot;</span><span class="p">;</span>
 <span class="k">use</span> <span class="nn">File::</span><span class="n">Copy</span><span class="p">;</span>
 
+<span class="c1"># Task info</span>
+
 <span class="k">our</span> <span class="nv">%Task</span> <span class="o">=</span> <span class="p">(</span>
-	<span class="n">name</span>    <span class="o">=&gt;</span> <span class="s">&#39;findRMF&#39;</span><span class="p">,</span>
-	<span class="n">version</span> <span class="o">=&gt;</span> <span class="s">&#39;0.1&#39;</span><span class="p">,</span>
-	<span class="n">releasedate</span> <span class="o">=&gt;</span> <span class="s">&quot;2016-03-13&quot;</span><span class="p">,</span>
-	<span class="n">chatter</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
-	<span class="n">status</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
-	<span class="n">errmess</span> <span class="o">=&gt;</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
-	<span class="n">stem</span>    <span class="o">=&gt;</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
-	<span class="n">author</span>  <span class="o">=&gt;</span> <span class="s">&#39;Y.Wang&#39;</span><span class="p">,</span>
-    <span class="p">);</span>
+    <span class="n">name</span>        <span class="o">=&gt;</span> <span class="s">&#39;findRMF&#39;</span><span class="p">,</span>
+    <span class="n">version</span>     <span class="o">=&gt;</span> <span class="s">&#39;0.2&#39;</span><span class="p">,</span>
+    <span class="n">releasedate</span> <span class="o">=&gt;</span> <span class="s">&quot;2016-03-13&quot;</span><span class="p">,</span>
+    <span class="n">chatter</span>     <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">status</span>      <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">errmess</span>     <span class="o">=&gt;</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">stem</span>        <span class="o">=&gt;</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">author</span>      <span class="o">=&gt;</span> <span class="s">&#39;Y.Wang&#39;</span><span class="p">,</span>
+<span class="p">);</span>
 
-		
-<span class="c1"># Initial </span>
+<span class="c1"># Initial</span>
 
-<span class="k">my</span> <span class="nv">$isCopy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1"># 0 is no, 1 is yes.</span>
+<span class="k">my</span> <span class="nv">$isCopy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>    <span class="c1"># 0 is no, 1 is yes.</span>
 
 <span class="c1"># Main #</span>
 
-<span class="c1">## read parameter</span>
-<span class="k">my</span> <span class="nv">$filename</span> <span class="o">=</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="k">return</span> <span class="mi">0</span> <span class="k">if</span> <span class="nv">$Task</span><span class="p">{</span><span class="n">status</span><span class="p">};</span>
 
-<span class="k">unless</span><span class="p">(</span><span class="nb">defined</span> <span class="nv">$filename</span><span class="p">){</span>
-<span class="k">print</span> <span class="s">&quot;Please input the FITS filename (eg. sw00271019000xwtw2po_cl.evt):\n&quot;</span><span class="p">;</span>
-<span class="nb">chomp</span><span class="p">(</span><span class="nv">$filename</span> <span class="o">=</span> <span class="sr">&lt;STDIN&gt;</span><span class="p">);</span>
+<span class="c1">## read parameter</span>
+<span class="k">my</span> <span class="nv">$filename</span> <span class="o">=</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">);</span>
+
+<span class="k">unless</span> <span class="p">(</span> <span class="nb">defined</span> <span class="nv">$filename</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="o">&amp;</span><span class="n">PrntChty</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Please input the FITS filename (eg. sw00271019000xwtw2po_cl.evt):\n&quot;</span> <span class="p">);</span>
+    <span class="nb">chomp</span><span class="p">(</span> <span class="nv">$filename</span> <span class="o">=</span> <span class="sr">&lt;STDIN&gt;</span> <span class="p">);</span>
 <span class="p">}</span>
 
+<span class="c1">## get response matrix file</span>
+<span class="o">&amp;</span><span class="n">GetRmfFile</span><span class="p">(</span><span class="nv">$filename</span><span class="p">);</span>
 
-<span class="c1">## get response matrix file </span>
-<span class="k">my</span> <span class="nv">$rmfFilename</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">GetRmfFile</span><span class="p">(</span><span class="nv">$filename</span><span class="p">);</span>
+<span class="o">&amp;</span><span class="n">Error</span> <span class="k">if</span> <span class="nv">$Task</span><span class="p">{</span><span class="n">status</span><span class="p">};</span>
 
 <span class="c1">## copy rmf file to current folder</span>
-<span class="nv">$copied</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="nv">$rmfFilename</span><span class="p">,</span> <span class="s">&quot;./&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="nv">$rmfFilename</span> <span class="ow">and</span> <span class="nv">$isCopy</span><span class="p">;</span>
-<span class="k">print</span> <span class="s">&quot;\nRMF file has been copied to current folder.\n&quot;</span> <span class="k">if</span> <span class="nv">$copied</span><span class="p">;</span>
-<span class="k">print</span> <span class="s">&quot;Cannot find corresponding RMF file. \n&quot;</span> <span class="k">unless</span> <span class="nv">$rmfFilename</span><span class="p">;</span>
+<span class="nv">$copied</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span> <span class="nv">$rmfFilename</span><span class="p">,</span> <span class="s">&quot;./&quot;</span> <span class="p">)</span> <span class="k">if</span> <span class="nv">$rmfFilename</span> <span class="ow">and</span> <span class="nv">$isCopy</span><span class="p">;</span>
+<span class="o">&amp;</span><span class="n">PrntChty</span><span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&quot;\nRMF file has been copied to current folder.\n&quot;</span> <span class="p">)</span> <span class="k">if</span> <span class="nv">$copied</span><span class="p">;</span>
 </pre></div>
 </td></tr></table></div>
 </div>

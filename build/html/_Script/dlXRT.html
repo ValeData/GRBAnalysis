@@ -1,0 +1,547 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dlXRT &mdash; GRB Data Analysis in 3 Days 0.9.9 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="GRB Data Analysis in 3 Days 0.9.9 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> GRB Data Analysis in 3 Days
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">1. 10 minutes tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Software.html">2. Software Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BAT.html">3. Swift BAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../XRT.html">4. Swift XRT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GBM.html">5. Fermi GBM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAT.html">6. Fermi LAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spectrum.html">7. Spectrum Fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Light-curve.html">8. Light-curve Fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced.html">9. Advanced Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Links.html">10. Helpful Links</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Script.html">Scripts</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">GRB Data Analysis in 3 Days</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>dlXRT</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/_Script/dlXRT.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dlxrt">
+<h1>dlXRT<a class="headerlink" href="#dlxrt" title="Permalink to this headline">¶</a></h1>
+<p>dlXRT is used for download necessary files for Swift-XRT and Swift-BAT data analysis.</p>
+<p><strong>Input:</strong> observation ID and instrument name</p>
+<p><strong>Output:</strong> event file, housekeeping file and attitude file</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>./dlxrt
+Please input the observation ID <span class="o">(</span>eg.00554620000<span class="o">)</span>:
+00554620000
+Please input instrument xrt/bat <span class="o">(</span>eg. xrt<span class="o">)</span>:
+xrt
+......
+......
+Download finished.
+</pre></div>
+</div>
+<p><strong>Source code:</strong></p>
+<div class="highlight-perl"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/perl</span>
+
+<span class="nb">require</span> <span class="s">&quot;./libswxrt.pl&quot;</span><span class="p">;</span>
+
+
+<span class="c1"># This script is for downloading data from Swift website</span>
+<span class="k">our</span> <span class="nv">%Task</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">name</span>        <span class="o">=&gt;</span> <span class="s">&#39;dlxrt&#39;</span><span class="p">,</span>
+    <span class="n">version</span>     <span class="o">=&gt;</span> <span class="s">&#39;0.6&#39;</span><span class="p">,</span>
+    <span class="n">releasedate</span> <span class="o">=&gt;</span> <span class="s">&quot;2013-10-6&quot;</span><span class="p">,</span>
+    <span class="n">chatter</span>     <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">status</span>      <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">errmess</span>     <span class="o">=&gt;</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">stem</span>        <span class="o">=&gt;</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">author</span>      <span class="o">=&gt;</span> <span class="s">&#39;Y.Wang&#39;</span><span class="p">,</span>
+<span class="p">);</span>
+
+
+<span class="c1">## Enter observational ID and Instrument</span>
+
+<span class="k">my</span> <span class="nv">$obsID</span> <span class="o">=</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="k">my</span> <span class="nv">$inst</span> <span class="o">=</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$ARGV</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="k">my</span> <span class="nv">$doXrt</span> <span class="o">=</span> <span class="s">&quot;no&quot;</span><span class="p">;</span> <span class="c1">#if download XRT data</span>
+<span class="k">my</span> <span class="nv">$doBat</span> <span class="o">=</span> <span class="s">&quot;no&quot;</span><span class="p">;</span> <span class="c1">#if download Bat data</span>
+<span class="c1">#my $doUvot = &quot;yes&quot;; # if download UVOT data</span>
+
+<span class="k">unless</span><span class="p">(</span><span class="nb">defined</span> <span class="nv">$obsID</span><span class="p">){</span>
+<span class="k">print</span> <span class="s">&quot;Please input the observation ID (eg.00554620000):\n&quot;</span><span class="p">;</span>
+<span class="nb">chomp</span><span class="p">(</span><span class="nv">$obsID</span> <span class="o">=</span> <span class="sr">&lt;STDIN&gt;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">unless</span><span class="p">(</span><span class="nb">defined</span> <span class="nv">$inst</span><span class="p">){</span>
+<span class="k">print</span> <span class="s">&quot;Please input instrument xrt/bat (eg. xrt):\n&quot;</span><span class="p">;</span>
+<span class="nb">chomp</span><span class="p">(</span><span class="nv">$inst</span> <span class="o">=</span> <span class="sr">&lt;STDIN&gt;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nv">$doXrt</span> <span class="o">=</span> <span class="s">&quot;yes&quot;</span> <span class="k">if</span> <span class="nv">$inst</span> <span class="ow">eq</span> <span class="s">&quot;xrt&quot;</span> <span class="ow">or</span> <span class="nv">$inst</span> <span class="ow">eq</span> <span class="s">&quot;XRT&quot;</span><span class="p">;</span>
+<span class="nv">$doBat</span> <span class="o">=</span> <span class="s">&quot;yes&quot;</span> <span class="k">if</span> <span class="nv">$inst</span> <span class="ow">eq</span> <span class="s">&quot;bat&quot;</span> <span class="ow">or</span> <span class="nv">$inst</span> <span class="ow">eq</span> <span class="s">&quot;BAT&quot;</span><span class="p">;</span>
+
+
+<span class="k">my</span> <span class="nv">$trigger</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$obsID</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span>
+<span class="k">my</span> <span class="nv">$grbName</span><span class="p">;</span>
+
+<span class="c1">### Download List</span>
+<span class="c1">#### XRT file list</span>
+<span class="c1">#my $sat_fits = &quot;http://www.swift.ac.uk/archive/reproc/&quot;.&quot;$obsID&quot;.&quot;/auxil/sw&quot;.&quot;$obsID&quot;.&quot;sat.fits.gz&quot;;</span>
+<span class="c1">#my $sat_fits_pat = &quot;http://www.swift.ac.uk/archive/reproc/&quot;.&quot;$obsID&quot;.&quot;/auxil/sw&quot;.&quot;$obsID&quot;.&quot;pat.fits.gz&quot;;</span>
+<span class="c1">#my $sat_fits_uat = &quot;http://www.swift.ac.uk/archive/reproc/&quot;.&quot;$obsID&quot;.&quot;/auxil/sw&quot;.&quot;$obsID&quot;.&quot;uat.fits.gz&quot;;</span>
+<span class="k">my</span> <span class="nv">$xhd_hk</span> <span class="o">=</span> <span class="s">&quot;http://www.swift.ac.uk/archive/reproc/&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;/xrt/hk/sw&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;xhd.hk.gz&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$pcw3_cl_evt</span> <span class="o">=</span> <span class="s">&quot;http://www.swift.ac.uk/archive/reproc/&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;/xrt/event/sw&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;xpcw3po_cl.evt.gz&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$wtw2_cl_evt</span> <span class="o">=</span> <span class="s">&quot;http://www.swift.ac.uk/archive/reproc/&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;/xrt/event/sw&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;xwtw2po_cl.evt.gz&quot;</span><span class="p">;</span>
+<span class="c1">#my @downloadListXrt = ($sat_fits, $sat_fits_pat, $sat_fits_uat, $xhd_hk, $pcw3_cl_evt, $wtw2_cl_evt);</span>
+<span class="k">my</span> <span class="nv">@downloadListXrt</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$xhd_hk</span><span class="p">,</span> <span class="nv">$pcw3_cl_evt</span><span class="p">,</span> <span class="nv">$wtw2_cl_evt</span><span class="p">);</span>
+
+
+<span class="c1">#### BAT file list</span>
+<span class="k">my</span> <span class="nv">$bat_uf_evt</span> <span class="o">=</span> <span class="s">&quot;http://www.swift.ac.uk/archive/reproc/&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;/bat/event/sw&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;bevshsp_uf.evt.gz&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$bdecb_hk</span> <span class="o">=</span> <span class="s">&quot;http://www.swift.ac.uk/archive/reproc/&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;/bat/hk/sw&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;bdecb.hk.gz&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$bdqcb_hk</span> <span class="o">=</span> <span class="s">&quot;http://www.swift.ac.uk/archive/reproc/&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;/bat/hk/sw&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;bdqcb.hk.gz&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$fits_bevtr</span> <span class="o">=</span> <span class="s">&quot;http://www.swift.ac.uk/archive/reproc/&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;/bat/event/sw&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;bevtr.fits.gz&quot;</span><span class="p">;</span>
+<span class="c1">#my @downloadListBat = ($sat_fits, $sat_fits_pat, $sat_fits_uat, $bat_uf_evt, $bdecb_hk, $bdqcb_hk, $fits_bevtr);</span>
+<span class="k">my</span> <span class="nv">@downloadListBat</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$bat_uf_evt</span><span class="p">,</span> <span class="nv">$bdecb_hk</span><span class="p">,</span> <span class="nv">$bdqcb_hk</span><span class="p">,</span> <span class="nv">$fits_bevtr</span><span class="p">);</span>
+
+
+
+<span class="c1">### Find Name and Make folder</span>
+<span class="k">my</span> <span class="nv">$nameListWeb</span> <span class="o">=</span> <span class="s">&quot;http://www.swift.ac.uk/grb_region/&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$grbName</span> <span class="o">=</span> <span class="nv">$trigger</span><span class="p">;</span>
+<span class="nb">system</span> <span class="s">&#39;curl&#39;</span><span class="p">,</span><span class="s">&quot;$nameListWeb&quot;</span><span class="p">,</span><span class="s">&quot;-o&quot;</span><span class="p">,</span><span class="s">&quot;name.list&quot;</span><span class="p">;</span>
+<span class="nb">open</span> <span class="k">my</span> <span class="nv">$nameList</span><span class="p">,</span> <span class="s">&#39;&lt;&#39;</span><span class="p">,</span> <span class="s">&quot;name.list&quot;</span><span class="p">;</span> 
+<span class="k">while</span> <span class="p">(</span><span class="sr">&lt;$nameList&gt;</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="sr">/.*$trigger.*GRB\s(\w+)&lt;/</span><span class="p">){</span>
+	<span class="nv">$grbName</span> <span class="o">=</span> <span class="nv">$1</span> <span class="p">;</span>
+		<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nb">close</span> <span class="nv">$nameList</span><span class="p">;</span>
+<span class="nb">system</span> <span class="s">&#39;rm -f name.list&#39;</span><span class="p">;</span>
+<span class="k">print</span>  <span class="s">&quot;Data are stored in the forder $grbName.\n&quot;</span><span class="p">;</span>
+<span class="nb">mkdir</span> <span class="s">&quot;$grbName&quot;</span> <span class="k">unless</span> <span class="p">(</span><span class="o">-</span><span class="n">e</span> <span class="s">&quot;$grbName&quot;</span><span class="p">);</span>
+
+
+<span class="nb">chdir</span><span class="p">(</span><span class="s">&quot;$grbName&quot;</span><span class="p">);</span>
+<span class="nb">mkdir</span> <span class="s">&quot;$obsID&quot;</span> <span class="k">unless</span> <span class="p">(</span><span class="o">-</span><span class="n">e</span> <span class="s">&quot;$obsID&quot;</span><span class="p">);</span>
+<span class="nb">chdir</span><span class="p">(</span><span class="s">&quot;$obsID&quot;</span><span class="p">);</span>
+
+
+
+<span class="c1">### download XRT data</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$doXrt</span> <span class="ow">eq</span> <span class="s">&quot;yes&quot;</span><span class="p">){</span>
+
+<span class="nb">mkdir</span> <span class="s">&quot;xrt&quot;</span> <span class="k">unless</span> <span class="p">(</span><span class="o">-</span><span class="n">e</span> <span class="s">&quot;xrt&quot;</span><span class="p">);</span>
+<span class="nb">chdir</span><span class="p">(</span><span class="s">&quot;xrt&quot;</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="nv">$file</span> <span class="p">(</span><span class="nv">@downloadListXrt</span><span class="p">){</span>
+<span class="nb">system</span> <span class="s">&#39;wget&#39;</span><span class="p">,</span><span class="s">&#39;--no-check-certificate&#39;</span><span class="p">,</span><span class="s">&#39;--no-clobber&#39;</span><span class="p">,</span><span class="s">&quot;$file&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">#system &#39;gzip --decompress --force --keep *.evt.gz&#39;;</span>
+<span class="c1">#system &#39;rm -r *.evt.gz&#39;;</span>
+
+<span class="c1">## download attitude file</span>
+<span class="k">my</span> <span class="nv">$attFlag</span><span class="p">,</span> <span class="nv">$attflagPC</span><span class="p">,</span> <span class="nv">$attflagWT</span><span class="p">,</span> <span class="nv">$attFile</span><span class="p">,</span> <span class="nv">$att_fits</span><span class="p">;</span>
+
+<span class="k">my</span> <span class="nv">$pcEvent</span> <span class="o">=</span> <span class="s">&quot;sw&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;xpcw3po_cl.evt.gz&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$wtEvent</span> <span class="o">=</span> <span class="s">&quot;sw&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;xwtw2po_cl.evt.gz&quot;</span><span class="p">;</span>
+
+<span class="o">&amp;</span><span class="n">GetKeyword</span><span class="p">(</span><span class="nv">$pcEvent</span><span class="p">,</span> <span class="s">&#39;EVENTS&#39;</span><span class="p">,</span> <span class="nb">undef</span><span class="p">,</span> <span class="s">&#39;ATTFLAG&#39;</span><span class="p">,</span> <span class="o">\</span><span class="nv">$attflagPC</span><span class="p">,</span> <span class="nb">undef</span><span class="p">);</span>
+<span class="nv">$Task</span><span class="p">{</span><span class="n">status</span><span class="p">}</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="o">&amp;</span><span class="n">GetKeyword</span><span class="p">(</span><span class="nv">$wtEvent</span><span class="p">,</span> <span class="s">&#39;EVENTS&#39;</span><span class="p">,</span> <span class="nb">undef</span><span class="p">,</span> <span class="s">&#39;ATTFLAG&#39;</span><span class="p">,</span> <span class="o">\</span><span class="nv">$attflagWT</span><span class="p">,</span> <span class="nb">undef</span><span class="p">);</span>
+
+<span class="nv">$attFlag</span> <span class="o">=</span> <span class="nv">$attflagPC</span> <span class="k">if</span> <span class="nv">$attflagPC</span><span class="p">;</span>
+<span class="nv">$attFlag</span> <span class="o">=</span> <span class="nv">$attflagWT</span> <span class="k">if</span> <span class="nv">$attflagWT</span><span class="p">;</span>
+
+<span class="o">&amp;</span><span class="n">PrntChty</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;ATTFLAG is $attFlag \n&quot;</span><span class="p">);</span>
+
+<span class="c1">#my $evtFilenameEvents=&quot;$evtFilename&quot;.&quot;[Events]&quot;;</span>
+<span class="c1">#my $att = `ftlist $evtFilenameEvents k include=HISTORY`;</span>
+<span class="nv">$attFile</span><span class="o">=</span><span class="s">&quot;sw&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;pat.fits.gz&quot;</span> <span class="k">if</span> <span class="nv">$attFlag</span> <span class="ow">eq</span> <span class="s">&quot;110&quot;</span><span class="p">;</span>
+<span class="nv">$attFile</span><span class="o">=</span><span class="s">&quot;sw&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;sat.fits.gz&quot;</span> <span class="k">if</span> <span class="nv">$attFlag</span> <span class="ow">eq</span> <span class="s">&quot;100&quot;</span><span class="p">;</span>
+<span class="nv">$attFile</span><span class="o">=</span><span class="s">&quot;sw&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;uat.fits.gz&quot;</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$attFlag</span> <span class="ow">eq</span> <span class="s">&quot;111&quot;</span> <span class="ow">or</span> <span class="nv">$attFlag</span> <span class="ow">eq</span> <span class="s">&quot;101&quot;</span><span class="p">);</span>
+
+<span class="nv">$att_fits</span> <span class="o">=</span> <span class="s">&quot;http://www.swift.ac.uk/archive/reproc/&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;/auxil/&quot;</span><span class="o">.</span><span class="s">&quot;$attFile&quot;</span><span class="p">;</span>
+<span class="o">&amp;</span><span class="n">PrntChty</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;Attitude file is $att_fits \n&quot;</span><span class="p">);</span>
+
+<span class="nb">system</span> <span class="s">&#39;wget&#39;</span><span class="p">,</span><span class="s">&#39;--no-check-certificate&#39;</span><span class="p">,</span><span class="s">&#39;--no-clobber&#39;</span><span class="p">,</span><span class="s">&quot;$att_fits&quot;</span><span class="p">;</span>
+
+<span class="nb">chdir</span><span class="p">(</span><span class="s">&quot;..&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">### download bat data</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$doBat</span> <span class="ow">eq</span> <span class="s">&quot;yes&quot;</span><span class="p">){</span>
+
+<span class="nb">mkdir</span> <span class="s">&quot;bat&quot;</span> <span class="k">unless</span> <span class="p">(</span><span class="o">-</span><span class="n">e</span> <span class="s">&quot;bat&quot;</span><span class="p">);</span>
+<span class="nb">chdir</span><span class="p">(</span><span class="s">&quot;bat&quot;</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="nv">$file</span> <span class="p">(</span><span class="nv">@downloadListBat</span><span class="p">){</span>
+<span class="nb">system</span> <span class="s">&#39;wget&#39;</span><span class="p">,</span><span class="s">&#39;--no-check-certificate&#39;</span><span class="p">,</span><span class="s">&#39;--no-clobber&#39;</span><span class="p">,</span><span class="s">&quot;$file&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">#system &#39;gzip --decompress --force --keep *.evt.gz&#39;;</span>
+<span class="c1">#system &#39;rm -r *.evt.gz&#39;;</span>
+
+<span class="k">my</span> <span class="nv">$attFlag</span><span class="p">,</span> <span class="nv">$attflagPC</span><span class="p">,</span> <span class="nv">$attflagWT</span><span class="p">,</span> <span class="nv">$attFile</span><span class="p">,</span> <span class="nv">$att_fits</span><span class="p">;</span>
+
+<span class="k">my</span> <span class="nv">$batEvent</span> <span class="o">=</span> <span class="s">&quot;sw&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;bevshsp_uf.evt.gz&quot;</span><span class="p">;</span>
+
+<span class="o">&amp;</span><span class="n">GetKeyword</span><span class="p">(</span><span class="nv">$batEvent</span><span class="p">,</span> <span class="s">&#39;EVENTS&#39;</span><span class="p">,</span> <span class="nb">undef</span><span class="p">,</span> <span class="s">&#39;ATTFLAG&#39;</span><span class="p">,</span> <span class="o">\</span><span class="nv">$attFlag</span><span class="p">,</span> <span class="nb">undef</span><span class="p">);</span>
+
+<span class="o">&amp;</span><span class="n">PrntChty</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;ATTFLAG is $attFlag \n&quot;</span><span class="p">);</span>
+
+<span class="c1">#my $evtFilenameEvents=&quot;$evtFilename&quot;.&quot;[Events]&quot;;</span>
+<span class="c1">#my $att = `ftlist $evtFilenameEvents k include=HISTORY`;</span>
+<span class="nv">$attFile</span><span class="o">=</span><span class="s">&quot;sw&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;pat.fits.gz&quot;</span> <span class="k">if</span> <span class="nv">$attFlag</span> <span class="ow">eq</span> <span class="s">&quot;110&quot;</span><span class="p">;</span>
+<span class="nv">$attFile</span><span class="o">=</span><span class="s">&quot;sw&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;sat.fits.gz&quot;</span> <span class="k">if</span> <span class="nv">$attFlag</span> <span class="ow">eq</span> <span class="s">&quot;100&quot;</span><span class="p">;</span>
+<span class="nv">$attFile</span><span class="o">=</span><span class="s">&quot;sw&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;uat.fits.gz&quot;</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$attFlag</span> <span class="ow">eq</span> <span class="s">&quot;111&quot;</span> <span class="ow">or</span> <span class="nv">$attFlag</span> <span class="ow">eq</span> <span class="s">&quot;101&quot;</span><span class="p">);</span>
+
+<span class="nv">$att_fits</span> <span class="o">=</span> <span class="s">&quot;http://www.swift.ac.uk/archive/reproc/&quot;</span><span class="o">.</span><span class="s">&quot;$obsID&quot;</span><span class="o">.</span><span class="s">&quot;/auxil/&quot;</span><span class="o">.</span><span class="s">&quot;$attFile&quot;</span><span class="p">;</span>
+<span class="o">&amp;</span><span class="n">PrntChty</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;Attitude file is $att_fits \n&quot;</span><span class="p">);</span>
+
+<span class="nb">system</span> <span class="s">&#39;wget&#39;</span><span class="p">,</span><span class="s">&#39;--no-check-certificate&#39;</span><span class="p">,</span><span class="s">&#39;--no-clobber&#39;</span><span class="p">,</span><span class="s">&quot;$att_fits&quot;</span><span class="p">;</span>
+
+<span class="nb">chdir</span><span class="p">(</span><span class="s">&quot;..&quot;</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="o">&amp;</span><span class="n">PrntChty</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;Download finished. \n&quot;</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Vale Data (Y.Wang, M.Peresano, R.Moradi, S.Shakeri, Y.Aimuratov).
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.9.9',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

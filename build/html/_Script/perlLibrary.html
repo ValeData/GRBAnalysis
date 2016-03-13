@@ -5771,9 +5771,9 @@
 
     <span class="k">my</span> <span class="nv">$fptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">GetFitsPointer</span><span class="p">(</span><span class="nv">$filename</span><span class="p">,</span><span class="nv">$extname</span><span class="p">,</span><span class="nv">$pointer</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nv">$Task</span><span class="p">{</span><span class="n">status</span><span class="p">})</span> <span class="p">{</span> 
-	<span class="nv">$Task</span><span class="p">{</span><span class="n">errmess</span><span class="p">}</span> <span class="o">=</span> <span class="s">&quot;Unable to open &#39;$filename&#39; file&quot;</span><span class="p">;</span>
+		<span class="nv">$Task</span><span class="p">{</span><span class="n">errmess</span><span class="p">}</span> <span class="o">=</span> <span class="s">&quot;Unable to open &#39;$filename&#39; file&quot;</span><span class="p">;</span>
         <span class="nv">$Task</span><span class="p">{</span><span class="n">status</span><span class="p">}</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-	<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+		<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
     <span class="p">}</span>
     
     <span class="k">my</span> <span class="p">(</span><span class="nv">$comm</span><span class="p">,</span><span class="nv">$value</span><span class="p">,</span><span class="nv">$str</span><span class="p">);</span>

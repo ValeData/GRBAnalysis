@@ -2196,9 +2196,9 @@ sub GetKeyword {
 
     my $fptr = &GetFitsPointer($filename,$extname,$pointer);
     if ($Task{status}) { 
-	$Task{errmess} = "Unable to open '$filename' file";
+		$Task{errmess} = "Unable to open '$filename' file";
         $Task{status} = 1;
-	return 1;
+		return 1;
     }
     
     my ($comm,$value,$str);

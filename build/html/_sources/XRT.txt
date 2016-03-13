@@ -39,6 +39,8 @@ What kind of files do we need?
 
 *	**Redistribution Matrix File** ``.rmf`` and  **Ancillary Response File** ``.arf``. The Redistribution Matrix gives the probabilities of an incoming photon of energy E will be detected in several detector's channels. The Ancillary Response Matrix gives the "effective area", the effective sensitivity area of the detector to photons of given energy" of the detector system, and usually includes such components as mirror vignetting, filters, etc.
 
+ .. note::
+
 		In some cases ``.arf`` and ``.rmf`` are supplemented, in the cases of BAT and UVOT, replaced by ``.rsp`` files.  A detailed 		description is available: `Definition of RMF and ARF file formats`_.
 
 
@@ -83,6 +85,10 @@ How to download data?
 6.	Response matrix files ``.rmf``, ``.arf`` and ``.rsp`` are not in this page, we will download and produce them when doing the spectrum analysis.
 
 
+ .. hint::
+
+     A perl script for downloading above files: `dlXRT`_
+
 
 
 
@@ -95,3 +101,4 @@ How to generate spectrum and light curve ?
 .. _`Swift UK data center`: http://www.swift.ac.uk/xrt_curves/00676423/
 .. _`Definition of RMF and ARF file formats`: http://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/docs/memos/cal_gen_92_002/cal_gen_92_002.html
 .. _`Swift Archive Download Portal`: http://www.swift.ac.uk/swift_portal/
+.. _`dlXRT`: _script/dlXRT.html

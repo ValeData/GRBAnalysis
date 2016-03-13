@@ -28,7 +28,14 @@ Hope it acts as the entry of your GRB data world.
    Spectrum Fitting <Spectrum>
    Light-curve Fitting <Light-curve>
    Advanced Learning <Advanced>
-   Helpful Links <Links>
+   Helpful Links <Links>  
+
+   
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   
+   Scripts <_Script/Script>
    
 --------
 

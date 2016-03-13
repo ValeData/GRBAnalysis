@@ -24,7 +24,9 @@ Type of Data File
 
 .. image:: _image/compareEvt.png
 
-* Event file ``.evt``, the most important one, which contains the observational data. Swift website provides **screened event file** ``_cl.evt`` and **unscreened event file** ``_uf.evt``.
+*	**Event file** ``.evt``, the most important one, which contains the observational data. Swift website provides **screened event file** ``_cl.evt`` and **unscreened event file** ``_uf.evt``.
+
+*	**Response Matrix** ``.rmf``, 
 
 
 Download Data

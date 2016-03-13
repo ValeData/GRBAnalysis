@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>findRMF &mdash; GRB Data Analysis in 3 Days 0.9.9 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="GRB Data Analysis in 3 Days 0.9.9 documentation" href="../index.html"/>
+        <link rel="up" title="Scripts" href="Script.html"/>
+        <link rel="prev" title="Perl Subroutines from HEASoft" href="perlLibrary.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> GRB Data Analysis in 3 Days
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">1. 10 minutes tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Software.html">2. Software Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BAT.html">3. Swift BAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../XRT.html">4. Swift XRT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GBM.html">5. Fermi GBM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAT.html">6. Fermi LAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Spectrum.html">7. Spectrum Fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Light-curve.html">8. Light-curve Fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced.html">9. Advanced Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Links.html">10. Helpful Links</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="Script.html">Scripts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="perlLibrary.html">Perl Subroutines from HEASoft</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Find Response Matrix File</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">GRB Data Analysis in 3 Days</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="Script.html">Scripts</a> &raquo;</li>
+      
+    <li>findRMF</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/_Script/findRMF.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="findrmf">
+<h1>findRMF<a class="headerlink" href="#findrmf" title="Permalink to this headline">¶</a></h1>
+<p>findRMF is used for finding the corresponding response matrix file from event file.</p>
+<p><strong>Input:</strong> <code class="docutils literal"><span class="pre">.evt</span></code> event file name</p>
+<p><strong>Output:</strong> <code class="docutils literal"><span class="pre">.rmf</span></code> response matrix file name</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ./findRMF
+Please input the FITS filename:
+sw00271019000xpcw2po_cl.evt
+: Warning: cannot <span class="nb">read</span> <span class="s1">&#39;XRTVSUB&#39;</span> keyword in file <span class="s1">&#39;sw00271019000xpcw2po_cl.evt&#39;</span>
+: Warning: using default value <span class="s1">&#39;0&#39;</span>
+: Info: CallQuzcif: Running quzcif SWIFT XRT - - matrix 2007-03-18 07:37:09 <span class="s2">&quot;datamode.eq.photon.and.grade.eq.G0:12.and.XRTVSUB.eq.0&quot;</span> retrieve+ <span class="nv">clobber</span><span class="o">=</span>yes
+CallQuzcif: Info: Output <span class="s1">&#39;quzcif&#39;</span> Command:
+CallQuzcif: Info:/Applications/heasoft/CALDB_LOCAL/data/swift/xrt/cpf/rmf/swxpc0to12s0_20070101v012.rmf   1
+</pre></div>
+</div>
+<p><strong>Source code:</strong></p>
+<p><a class="reference external" href="_code/findRMF">Javascript API</a></p>
+<div class="highlight-perl"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/perl</span>
+
+<span class="nb">require</span> <span class="s">&quot;libswxrt.pl&quot;</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">File::</span><span class="n">Copy</span><span class="p">;</span>
+
+<span class="k">our</span> <span class="nv">%Task</span> <span class="o">=</span> <span class="p">(</span>
+	<span class="n">name</span>    <span class="o">=&gt;</span> <span class="s">&#39;findRMF&#39;</span><span class="p">,</span>
+	<span class="n">version</span> <span class="o">=&gt;</span> <span class="s">&#39;0.1&#39;</span><span class="p">,</span>
+	<span class="n">releasedate</span> <span class="o">=&gt;</span> <span class="s">&quot;2016-03-13&quot;</span><span class="p">,</span>
+	<span class="n">chatter</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+	<span class="n">status</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+	<span class="n">errmess</span> <span class="o">=&gt;</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
+	<span class="n">stem</span>    <span class="o">=&gt;</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
+	<span class="n">author</span>  <span class="o">=&gt;</span> <span class="s">&#39;Y.Wang&#39;</span><span class="p">,</span>
+    <span class="p">);</span>
+
+		
+<span class="c1"># Initial </span>
+
+<span class="k">my</span> <span class="nv">$isCopy</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1"># 0 is no, 1 is yes.</span>
+
+<span class="c1"># Main #</span>
+
+<span class="c1">## read parameter</span>
+<span class="k">my</span> <span class="nv">$filename</span> <span class="o">=</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+
+<span class="k">unless</span><span class="p">(</span><span class="nb">defined</span> <span class="nv">$filename</span><span class="p">){</span>
+<span class="k">print</span> <span class="s">&quot;Please input the FITS filename (eg. sw00271019000xwtw2po_cl.evt):\n&quot;</span><span class="p">;</span>
+<span class="nb">chomp</span><span class="p">(</span><span class="nv">$filename</span> <span class="o">=</span> <span class="sr">&lt;STDIN&gt;</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="c1">## get response matrix file </span>
+<span class="k">my</span> <span class="nv">$rmfFilename</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">GetRmfFile</span><span class="p">(</span><span class="nv">$filename</span><span class="p">);</span>
+
+<span class="c1">## copy rmf file to current folder</span>
+<span class="nv">$copied</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="nv">$rmfFilename</span><span class="p">,</span> <span class="s">&quot;./&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="nv">$rmfFilename</span> <span class="ow">and</span> <span class="nv">$isCopy</span><span class="p">;</span>
+<span class="k">print</span> <span class="s">&quot;\nRMF file has been copied to current folder.\n&quot;</span> <span class="k">if</span> <span class="nv">$copied</span><span class="p">;</span>
+<span class="k">print</span> <span class="s">&quot;Cannot find corresponding RMF file. \n&quot;</span> <span class="k">unless</span> <span class="nv">$rmfFilename</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="perlLibrary.html" class="btn btn-neutral" title="Perl Subroutines from HEASoft" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Vale Data (Y.Wang, M.Peresano, R.Moradi, S.Shakeri, Y.Aimuratov).
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.9.9',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

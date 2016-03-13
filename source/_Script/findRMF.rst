@@ -11,7 +11,7 @@ findRMF is used for finding the corresponding response matrix file from event fi
 
 **Example**::
 
-		$ ./findRMF 
+		./findRMF 
 		Please input the FITS filename:
 		sw00271019000xpcw2po_cl.evt
 		: Warning: cannot read 'XRTVSUB' keyword in file 'sw00271019000xpcw2po_cl.evt'

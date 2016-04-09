@@ -35,7 +35,7 @@ Hope it acts as the entry of your GRB data world.
    :maxdepth: 2
    :hidden:
    
-   Scripts <_script/script>
+   Scripts <script>
    
 --------
 

@@ -10,9 +10,9 @@ Two Modes: Windows Timing & Photon Counting
 
 *Swift*-XRT has two modes, Windowed Timing (WT) and Photon Counting (PC).
 
-The Windowed Timing mode is obtained by binning 10 rows into a single row, and then reading out only the central 200 columns of the CCD. The time resolution of this mode is 1.7 ms.
+The Windowed Timing data is obtained by binning 10 rows into a single row, and then reading out only the central 200 columns of the CCD. The time resolution of this mode is 1.7 ms.
 
-The Photon Counting mode retains full imaging and spectroscopic resolution but the time resolution is limited to 2.5 s.
+The Photon Counting data retains full imaging and spectroscopic resolution but the time resolution is limited to 2.5 s.
 
 .. figure:: _image/160227A_XRT.png
 	:align: center

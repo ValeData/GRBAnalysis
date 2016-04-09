@@ -1,0 +1,25 @@
+#!/usr/bin/perl
+
+#warn "Input filename" if ($ARGV[1] eq "");
+
+my $evtFilename=$ARGV[0];
+my $evtFilenamePrimary="$evtFilename"."[primary]";
+ 
+
+unless ($ARGV[1]){
+	$ARGV[1] = "OBJECT";
+	$ARGV[2] = "OBS_ID";
+	$ARGV[3] = "TSTART";
+	$ARGV[4] = "TSTOP";
+	$ARGV[5] = "RA_OBJ";
+	$ARGV[6] = "DEC_OBJ";
+	$ARGV[7] = "TRIGTIME";
+	$ARGV[8] = "ATTFLAG";
+}
+foreach $argv (@ARGV){
+next if ($argv eq $ARGV[0]);
+my $par = `ftlist $evtFilenamePrimary hck`;
+$par =~ /\s{0,1}$argv\s*=\s+(.+?)\s+/;
+$par = $1;
+print "$argv = $par\n"
+}

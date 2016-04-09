@@ -12,9 +12,9 @@ Here I provide several *Perl* and *Python* scripts, Perl tackles data reduction,
    :maxdepth: 2
    :caption: Scripts
    
-   Perl Subroutines from HEASoft <perlLibrary>
-   Find Response Matrix File <findRMF>
-   Downloading Swift-XRT Data <dlXRT>
+   Perl Subroutines from HEASoft <_script/perlLibrary>
+   Find Response Matrix File <_script/findRMF>
+   Downloading Swift-XRT Data <_script/dlXRT>
    
 
 

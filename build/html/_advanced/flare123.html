@@ -1,0 +1,252 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The standard procedure of doing X-ray flare analysis &mdash; GRB Data Analysis in 3 Days 0.9.9 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="GRB Data Analysis in 3 Days 0.9.9 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> GRB Data Analysis in 3 Days
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.9
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">1. 10 minutes tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software.html">2. Software Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BAT.html">3. Swift BAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../XRT.html">4. Swift XRT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GBM.html">5. Fermi GBM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LAT.html">6. Fermi LAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spectrum.html">7. Spectrum Fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../light-curve.html">8. Light-curve Fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced.html">9. Advanced Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../links.html">10. Helpful Links</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../script.html">Scripts</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">GRB Data Analysis in 3 Days</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+    <li>The standard procedure of doing X-ray flare analysis</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/_advanced/flare123.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-standard-procedure-of-doing-x-ray-flare-analysis">
+<h1>The standard procedure of doing X-ray flare analysis<a class="headerlink" href="#the-standard-procedure-of-doing-x-ray-flare-analysis" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="spectrum-preparation">
+<h2>Spectrum Preparation<a class="headerlink" href="#spectrum-preparation" title="Permalink to this headline">¶</a></h2>
+<p>1       Download event and related files.</p>
+<p>2       Choose time bins:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>2.1) At least two bins, A and B, A is the rising part of flare, B is the decaying part of flare.
+2.2) If there is a flat part C, C is taken as one bin.
+2.3) Split A and B to small bins (A1, A2, B1, B2 ...) if meet following criteria, C is always only one bin.
+       2.3.1) At least 400 counts per bin.
+       2.3.2) Signal to noise ratio &gt; 25.
+       2.3.3) At most 2 small bins in A, and 3 small bins in B.
+       2.3.4) If the PC data in A or in B cannot comform to the above criteria, bin the PC data in A or in B as one bin.
+</pre></div>
+</div>
+<p>3       Generate spectra and light curves</p>
+<blockquote>
+<div><p>3.1) filter time then extract the image, time file shall be named (A1time.txt ...)
+3.2) from the image, select source region (10~20 pixels) and back ground region (40~80 pixels), size depends on the count flux.</p>
+<blockquote>
+<div>Region is a circle for PC mode and a rectangle for WT mode, region file names shall be (A1source.reg, A1back.reg ...)</div></blockquote>
+<p>3.3) extract event, spectrum, and light curve, names shall be (A1.evt, A1.pi, A1.lc ...).</p>
+</div></blockquote>
+<p>4       Generate exposure map, then generate the ancillary response file (A1.arf) with psf and exposure map.</p>
+<p>5       Find the name of redistribution matrix file (.rmf) from the output when running xrtmkarf, copy the .rmf file to the current folder.</p>
+<p>5       Bin spectrum, minimun 20 counts/bin for chi-sqaure, and minimum 1 counts/bin for c-stat, binned spectrum named (A1_20.grp, A1_1.grp).</p>
+<p>Some commands:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>3.3 Extract event file:</dt>
+<dd><p class="first last">extract event copyall=yes</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>4 Generate exposure map:</dt>
+<dd><p class="first last">xrtexpomap infile=sw00374210000xpcw3po_cl.evt attfile=sw00374210000sat.fits hdfile=sw00374210000xhd.hk outdir=./</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>4 Generate ancillary response file:</dt>
+<dd><p class="first last">grppha infile=A1.pha outfile=A1_20.grp comm=&#8217;group min 20 &amp; exit&#8217;
+grppha infile=A1.pha outfile=A1_1.grp comm=&#8217;group min 1 &amp; exit&#8217;</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Vale Data (Y.Wang, M.Peresano, R.Moradi, S.Shakeri, Y.Aimuratov).
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.9.9',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
